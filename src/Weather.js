@@ -9,13 +9,14 @@ export default function Weather(props) {
         response.data.main.temp
       )}℃`
     );
-
-    let units = "metric";
-    let apiKey = "57821c3b75b60c68ecd1a8d0dd1aa8d3";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.city}&appid=${apiKey}&units=${units}`;
-
-    axios.get(apiUrl).then(handleResponse);
   }
+
+  let units = "metric";
+  let apiKey = "57821c3b75b60c68ecd1a8d0dd1aa8d3";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.city}&appid=${apiKey}&units=${units}`;
+
+  axios.get(apiUrl).then(handleResponse);
+
   return (
     <PacmanLoader
       color={"#904F6C"}
