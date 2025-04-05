@@ -15,7 +15,7 @@ export default function Weather() {
     console.log(response.data);
     setWeather({
       temperature: (response.data.main.temp * 9) / 5 + 32,
-      wind: response.data.wind.speed,
+      wind: response.data.wind.speed * 2.23694,
       humidity: response.data.main.humidity,
       icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       description: response.data.weather[0].description,
