@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+//import PacmanLoader from "react-spinners/PacmanLoader";
 import "./Weather.css";
 
 export default function Weather() {
@@ -13,12 +14,12 @@ export default function Weather() {
     setError(false);
     console.log(response.data);
     setWeather({
-      temperature: response.data.main.temp,
+      temperature: (response.data.main.temp * 9) / 5 + 32,
       wind: response.data.wind.speed,
       humidity: response.data.main.humidity,
       icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       description: response.data.weather[0].description,
-      city: response.data.main.name, //resp.data.main.name
+      city: response.data.main.name,
     });
   }
 
@@ -48,7 +49,7 @@ export default function Weather() {
     <form onSubmit={handleSubmit}>
       <input
         type="search"
-        placeholder="🧭  Enter a city  🧭"
+        placeholder="🧭   Enter a city   🧭"
         onChange={updateCity}
         value={city}
       />
@@ -73,13 +74,13 @@ export default function Weather() {
         <h2>{weather.city}</h2>
 
         <ul>
-          <li>Temperature: {Math.round(weather.temperature)}℃</li>
+          <li>Temperature: {Math.round(weather.temperature)}℉</li>
           <br />
           <li>Description: {weather.description}</li>
           <br />
           <li>Humidity: {weather.humidity}%</li>
           <br />
-          <li>Wind: {Math.round(weather.wind)}km/h</li>
+          <li>Wind: {Math.round(weather.wind)} mph</li>
           <br />
           {weather.icon && (
             <li>
