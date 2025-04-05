@@ -18,6 +18,7 @@ function App() {
         <a
           href="https://www.linkedin.com/in/stephanie-anderson-rn-bsn-4658b336/"
           target="_blank"
+          rel="noreferrer"
         >
           {""} Stephanie Anderson
         </a>
@@ -25,6 +26,7 @@ function App() {
         <a
           href="https://github.com/IslaAdventura/weather-react"
           target="_blank"
+          rel="noreferrer"
         >
           {""} GitHub
         </a>
@@ -32,6 +34,7 @@ function App() {
         <a
           href="https://resplendent-caramel-d48712.netlify.app/"
           target="_blank"
+          rel="noreferrer"
         >
           {""} Netlify
         </a>
