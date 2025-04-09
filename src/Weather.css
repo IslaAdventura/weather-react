@@ -1,21 +1,58 @@
 .Weather {
   background-color: black;
+  border-radius: 5px;
+  color: aqua;
   font-family: "Quicksand", sans-serif;
+  margin: 30px auto;
+  max-width: 600px;
+  padding: 16px;
 }
 
-.emoji {
-  font-size: 15px;
+.Weather h1 {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 29px;
+  margin: 20px 0 0 0;
 }
 
-ul {
-  color: white;
-  font-family: "Quicksand", sans-serif;
-  font-size: 20px;
-  font-weight: 600;
+.Weather ul {
+  margin: 0;
+  padding: 0;
+}
+
+.Weather li {
+  font-size: 16px;
+  font-weight: 200;
+  line-height: 19px;
   list-style-type: none;
 }
 
-.button {
+.Weather img {
+  display: inline-block;
+  height: 64px;
+  margin-right: 10px;
+  width: 64px;
+}
+
+.Weather .temperature-number {
+  color: rgb(2, 228, 228);
+  font-size: 64px;
+  font-weight: bold;
+  line-height: 64px;
+  font-weight: 400;
+}
+
+.Weather .unit {
+  color: rgb(2, 228, 228);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1;
+  margin-left: 5px;
+  position: relative;
+  top: -34px;
+}
+
+.Weather .button {
   background: linear-gradient(
     45deg,
     #999 5%,
@@ -30,7 +67,7 @@ ul {
   box-shadow: 0 2px 5px rgb(143, 168, 140);
   color: #000;
   font-family: "Quicksand", sans-serif;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 500;
   margin: 0;
   margin-left: 20px;
@@ -40,7 +77,7 @@ ul {
   transition: all 0.2s ease-in-out;
 }
 
-button:hover {
+.Weather .button:hover {
   box-shadow: 0 4px 8px rgb(249, 249, 249);
   color: black;
   cursor: pointer;
@@ -55,12 +92,12 @@ button:hover {
   box-shadow: 0 2px 5px rgb(143, 168, 140);
   color: #000;
   font-family: "Quicksand", sans-serif;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 500;
   padding: 10px 25px;
   text-align: center;
 }
 
-p {
+.Weather p {
   color: red;
 }

@@ -1,8 +1,8 @@
 import React from "react";
 import Weather from "./Weather";
 import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css"; //remove?
-import "bootstrap/dist/js/bootstrap.bundle.min.js"; //remove?
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 function App() {
   return (
@@ -34,7 +34,7 @@ function App() {
             target="_blank"
             rel="noreferrer"
           >
-            {""} Netlify<span className="emoji">✨</span>
+            {""} Netlify <span className="emoji">✨</span>
           </a>
         </footer>
       </div>
