@@ -9,17 +9,9 @@ function App() {
     <div className="App">
       <div className="container">
         <header className="App-header">
-          <h1>
-            <span className="emoji">✨</span> Welcome to your Weather{" "}
-            <span className="emoji">✨</span>
-          </h1>
-
           <Weather />
         </header>
         <footer>
-          <button type="button" className="btn">
-            Base class
-          </button>
           <span className="emoji">✨</span>This project was coded by
           <a
             href="https://www.linkedin.com/in/stephanie-anderson-rn-bsn-4658b336/"
