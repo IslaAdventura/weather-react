@@ -29,13 +29,13 @@
 
 .Weather img {
   display: inline-block;
-  height: 64px;
+  height: 84px;
   margin-right: 10px;
-  width: 64px;
+  width: 84px;
 }
 
 .Weather .temperature-number {
-  color: rgb(2, 228, 228);
+  color: palevioletred;
   font-size: 64px;
   font-weight: bold;
   line-height: 64px;
@@ -43,13 +43,13 @@
 }
 
 .Weather .unit {
-  color: rgb(2, 228, 228);
-  font-size: 16px;
+  color: deeppink;
+  font-size: 20px;
   font-weight: 400;
   line-height: 1;
-  margin-left: 5px;
+
   position: relative;
-  top: -34px;
+  top: -32px;
 }
 
 .Weather .button {
@@ -96,6 +96,13 @@
   font-weight: 500;
   padding: 10px 25px;
   text-align: center;
+}
+
+.Weather .pacmanLoader {
+  display: block;
+  padding: 100px 40px;
+  position: relative;
+  top: -25px;
 }
 
 .Weather p {

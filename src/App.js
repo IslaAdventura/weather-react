@@ -9,7 +9,7 @@ function App() {
     <div className="App">
       <div className="container">
         <header className="App-header">
-          <Weather />
+          <Weather defaultCity="Sarasota" />
         </header>
         <footer>
           <span className="emoji">✨</span>This project was coded by
@@ -20,7 +20,7 @@ function App() {
           >
             {""} Stephanie Anderson
           </a>
-          , is open sourced on
+          , is open source on
           <a
             href="https://github.com/IslaAdventura/weather-react"
             target="_blank"
