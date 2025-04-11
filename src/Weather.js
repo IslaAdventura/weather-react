@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import PacmanLoader from "react-spinners/PacmanLoader";
 import "./Weather.css";
+import FormattedDate from "./FormattedDate";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
@@ -15,10 +16,20 @@ export default function Weather(props) {
       iconUrl: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       description: response.data.weather[0].description,
       city: response.data.name,
-      date: response.data.dt,
-      sunrise: response.data.sys.sunrise,
-      sunset: response.data.sys.sunset,
+      date: new Date(response.data.dt * 1000),
+      sunrise: new Date(response.data.sys.sunrise * 1000),
+      sunset: new Date(response.data.sys.sunset * 1000),
     });
+  }
+
+  function formatTime(date) {
+    let hours = date.getHours() % 12 || 12;
+    let minutes = date.getMinutes();
+    if (minutes < 10) {
+      minutes = `0${minutes}`;
+    }
+    let amPm = date.getHours() < 12 ? "am" : "pm";
+    return `${hours}:${minutes} ${amPm}`;
   }
 
   if (weatherData.ready) {
@@ -43,7 +54,9 @@ export default function Weather(props) {
         </form>
         <h1>{weatherData.city}</h1>
         <ul>
-          <li>{weatherData.date}******Wednesday</li>
+          <li>
+            <FormattedDate date={weatherData.date} />
+          </li>
           <li className="text-capitalize">{weatherData.description}</li>
         </ul>
         <div className="row mt-3">
@@ -67,8 +80,8 @@ export default function Weather(props) {
               <li>Humidity: {weatherData.humidity}%</li>
               <li>Wind: {Math.round(weatherData.wind)} mph ****NW****</li>
               <br />
-              <li>Sunrise: ****{weatherData.sunrise}8:00**** am</li>
-              <li>Sunset: ****{weatherData.sunset}**** pm</li>
+              <li>Sunrise: {formatTime(weatherData.sunrise)}</li>
+              <li>Sunset: {formatTime(weatherData.sunset)}</li>
             </ul>
           </div>
         </div>
