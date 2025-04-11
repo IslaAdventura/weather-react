@@ -11,12 +11,13 @@ export default function Weather(props) {
     setWeatherData({
       ready: true,
       temperature: response.data.main.temp,
-      wind: response.data.wind.speed,
       humidity: response.data.main.humidity,
       iconUrl: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       description: response.data.weather[0].description,
       city: response.data.name,
       date: new Date(response.data.dt * 1000),
+      wind: response.data.wind.speed,
+      windDeg: response.data.wind.deg,
       sunrise: new Date(response.data.sys.sunrise * 1000),
       sunset: new Date(response.data.sys.sunset * 1000),
     });
@@ -30,6 +31,36 @@ export default function Weather(props) {
     }
     let amPm = date.getHours() < 12 ? "am" : "pm";
     return `${hours}:${minutes} ${amPm}`;
+  }
+
+  function getWindDirection(degrees) {
+    let directions = [
+      { min: 348.75, max: 360, cardinal: "N" },
+      { min: 0, max: 11.25, cardinal: "N" },
+      { min: 11.25, max: 33.75, cardinal: "NNE" },
+      { min: 33.75, max: 56.25, cardinal: "NE" },
+      { min: 56.25, max: 78.75, cardinal: "ENE" },
+      { min: 78.75, max: 101.25, cardinal: "E" },
+      { min: 101.25, max: 123.75, cardinal: "ESE" },
+      { min: 123.75, max: 146.25, cardinal: "SE" },
+      { min: 146.25, max: 168.75, cardinal: "SSE" },
+      { min: 168.75, max: 191.25, cardinal: "S" },
+      { min: 191.25, max: 213.75, cardinal: "SSW" },
+      { min: 213.75, max: 236.25, cardinal: "SW" },
+      { min: 236.25, max: 258.75, cardinal: "WSW" },
+      { min: 258.75, max: 281.25, cardinal: "W" },
+      { min: 281.25, max: 303.75, cardinal: "WNW" },
+      { min: 303.75, max: 326.25, cardinal: "NW" },
+      { min: 326.25, max: 348.75, cardinal: "NNW" },
+    ];
+
+    for (let direction of directions) {
+      if (degrees >= direction.min && degrees < direction.max) {
+        return direction.cardinal;
+      }
+    }
+
+    return "N";
   }
 
   if (weatherData.ready) {
@@ -78,7 +109,10 @@ export default function Weather(props) {
             <ul>
               <li>Precipitation: ****15%****</li>
               <li>Humidity: {weatherData.humidity}%</li>
-              <li>Wind: {Math.round(weatherData.wind)} mph ****NW****</li>
+              <li>
+                Wind: {Math.round(weatherData.wind)} mph{" "}
+                {getWindDirection(weatherData.windDeg)}
+              </li>
               <br />
               <li>Sunrise: {formatTime(weatherData.sunrise)}</li>
               <li>Sunset: {formatTime(weatherData.sunset)}</li>
