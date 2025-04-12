@@ -43,11 +43,16 @@
 
 .Weather .unit {
   color: deeppink;
-  font-size: 20px;
+  font-size: 25px;
   font-weight: 400;
   line-height: 1;
   position: relative;
-  top: -32px;
+  top: -38px;
+}
+
+.Weather a {
+  color: aqua;
+  font-size: 20px;
 }
 
 .Weather .button {
