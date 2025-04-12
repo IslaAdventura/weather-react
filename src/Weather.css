@@ -27,15 +27,14 @@
   list-style-type: none;
 }
 
-.Weather img {
+.Weather canvas {
   display: inline-block;
-  height: 84px;
   margin-right: 10px;
-  width: 84px;
+  margin-top: 5px;
 }
 
 .Weather .temperature-number {
-  color: palevioletred;
+  color: deeppink;
   font-size: 84px;
   font-weight: bold;
   line-height: 64px;
