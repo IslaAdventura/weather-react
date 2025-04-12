@@ -1,7 +1,8 @@
 .App {
-  background-color: rgb(35, 35, 35);
+  background-color: black;
   margin: 30px auto;
   max-width: 600px;
+  padding: 20px 20px;
   text-align: center;
 }
 
@@ -13,7 +14,6 @@
 .App footer {
   color: white;
   font-size: 12px;
-  padding: 10px 10px;
 }
 
 .App footer a {

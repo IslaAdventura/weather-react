@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import axios from "axios";
 import PacmanLoader from "react-spinners/PacmanLoader";
 import "./Weather.css";
-import FormattedDate from "./FormattedDate";
+import WeatherInfo from "./WeatherInfo";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
+  const [city, setCity] = useState(props.defaultCity);
+
   function displayWeather(response) {
     console.log(response.data);
     setWeatherData({
@@ -23,50 +25,26 @@ export default function Weather(props) {
     });
   }
 
-  function formatTime(date) {
-    let hours = date.getHours() % 12 || 12;
-    let minutes = date.getMinutes();
-    if (minutes < 10) {
-      minutes = `0${minutes}`;
-    }
-    let amPm = date.getHours() < 12 ? "am" : "pm";
-    return `${hours}:${minutes} ${amPm}`;
+  function search() {
+    const apiKey = "57821c3b75b60c68ecd1a8d0dd1aa8d3";
+    let units = "imperial";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+    axios.get(apiUrl).then(displayWeather);
   }
 
-  function getWindDirection(degrees) {
-    let directions = [
-      { min: 348.75, max: 360, cardinal: "N" },
-      { min: 0, max: 11.25, cardinal: "N" },
-      { min: 11.25, max: 33.75, cardinal: "NNE" },
-      { min: 33.75, max: 56.25, cardinal: "NE" },
-      { min: 56.25, max: 78.75, cardinal: "ENE" },
-      { min: 78.75, max: 101.25, cardinal: "E" },
-      { min: 101.25, max: 123.75, cardinal: "ESE" },
-      { min: 123.75, max: 146.25, cardinal: "SE" },
-      { min: 146.25, max: 168.75, cardinal: "SSE" },
-      { min: 168.75, max: 191.25, cardinal: "S" },
-      { min: 191.25, max: 213.75, cardinal: "SSW" },
-      { min: 213.75, max: 236.25, cardinal: "SW" },
-      { min: 236.25, max: 258.75, cardinal: "WSW" },
-      { min: 258.75, max: 281.25, cardinal: "W" },
-      { min: 281.25, max: 303.75, cardinal: "WNW" },
-      { min: 303.75, max: 326.25, cardinal: "NW" },
-      { min: 326.25, max: 348.75, cardinal: "NNW" },
-    ];
+  function handleSubmit(event) {
+    event.preventDefault();
+    search(city);
+  }
 
-    for (let direction of directions) {
-      if (degrees >= direction.min && degrees < direction.max) {
-        return direction.cardinal;
-      }
-    }
-
-    return "N";
+  function handleCityChange(event) {
+    setCity(event.target.value);
   }
 
   if (weatherData.ready) {
     return (
       <div className="Weather">
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="row">
             <div className="col-9">
               <input
@@ -74,6 +52,7 @@ export default function Weather(props) {
                 placeholder="🧭       Enter a city       🧭"
                 className="form-control"
                 autoFocus="on"
+                onChange={handleCityChange}
               />
             </div>
             <div className="col-3">
@@ -83,57 +62,19 @@ export default function Weather(props) {
             </div>
           </div>
         </form>
-        <h1>{weatherData.city}</h1>
-        <ul>
-          <li>
-            <FormattedDate date={weatherData.date} />
-          </li>
-          <li className="text-capitalize">{weatherData.description}</li>
-        </ul>
-        <div className="row mt-3">
-          <div className="col-6">
-            <div className="clearfix">
-              <img
-                src={weatherData.iconUrl}
-                alt={weatherData.description}
-                className="float-left"
-              />
 
-              <span className="temperature-number">
-                {Math.round(weatherData.temperature)}
-              </span>
-              <span className="unit">℉</span>
-            </div>
-          </div>
-          <div className="col-6">
-            <ul>
-              <li>Precipitation: ****15%****</li>
-              <li>Humidity: {weatherData.humidity}%</li>
-              <li>
-                Wind: {Math.round(weatherData.wind)} mph{" "}
-                {getWindDirection(weatherData.windDeg)}
-              </li>
-              <br />
-              <li>Sunrise: {formatTime(weatherData.sunrise)}</li>
-              <li>Sunset: {formatTime(weatherData.sunset)}</li>
-            </ul>
-          </div>
-        </div>
+        <WeatherInfo data={weatherData} />
       </div>
     );
   } else {
-    const apiKey = "57821c3b75b60c68ecd1a8d0dd1aa8d3";
-    let units = "imperial";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}&units=${units}`;
-    axios.get(apiUrl).then(displayWeather);
-
+    search();
     return (
       <PacmanLoader
+        className="loader"
         color={"#904F6C"}
         size={35}
         aria-label="Loading Spinner"
         data-testid="loader"
-        className="pacmanLoader"
       />
     );
   }
