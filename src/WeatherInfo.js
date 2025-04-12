@@ -46,40 +46,43 @@ export default function WeatherInfo(props) {
 
   return (
     <div className="WeatherInfo">
-      <h1>{props.data.city}</h1>
       <ul>
         <li>
           <FormattedDate date={props.data.date} />
         </li>
+      </ul>
+      <h1>
+        {props.data.city}, {props.data.country}
+      </h1>
+      <ul>
         <li className="text-capitalize">{props.data.description}</li>
       </ul>
 
       <div className="row mt-3">
         <div className="col-6">
-          <div className="clearfix">
-            <div className="float-left">
-              <WeatherIcon code={props.data.icon} />
-            </div>
+          <WeatherIcon code={props.data.icon} />
 
-            <div className="float-left">
-              <WeatherTemperature fahrenheit={props.data.temperature} />
-            </div>
-          </div>
+          <WeatherTemperature fahrenheit={props.data.temperature} />
         </div>
+      </div>
 
-        <div className="col-6">
-          <ul>
-            <li>Precipitation: ****15%****</li>
-            <li>Humidity: {props.data.humidity}%</li>
-            <li>
-              Wind: {Math.round(props.data.wind)} mph{" "}
-              {getWindDirection(props.data.windDeg)}
-            </li>
-            <br />
-            <li>Sunrise: {formatTime(props.data.sunrise)}</li>
-            <li>Sunset: {formatTime(props.data.sunset)}</li>
-          </ul>
-        </div>
+      <div className="col-6">
+        <ul>
+          <li>
+            <strong>Humidity</strong>: {props.data.humidity}%
+          </li>
+          <li>
+            <strong>Wind</strong>: {Math.round(props.data.wind)} mph{" "}
+            {getWindDirection(props.data.windDeg)}
+          </li>
+          <br />
+          <li>
+            <strong>🐓🐓 Sunrise</strong>: {formatTime(props.data.sunrise)}
+          </li>
+          <li>
+            <strong>🦇🦇 Sunset</strong>: {formatTime(props.data.sunset)}
+          </li>
+        </ul>
       </div>
     </div>
   );

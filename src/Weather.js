@@ -17,11 +17,14 @@ export default function Weather(props) {
       icon: response.data.weather[0].icon,
       description: response.data.weather[0].description,
       city: response.data.name,
+      country: response.data.sys.country,
       date: new Date(response.data.dt * 1000),
       wind: response.data.wind.speed,
       windDeg: response.data.wind.deg,
       sunrise: new Date(response.data.sys.sunrise * 1000),
       sunset: new Date(response.data.sys.sunset * 1000),
+      highTemp: response.data.main.temp_max,
+      lowTemp: response.data.main.temp_min,
     });
   }
 

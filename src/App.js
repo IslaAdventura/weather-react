@@ -12,7 +12,7 @@ function App() {
           <Weather defaultCity="Sarasota" />
         </header>
         <footer>
-          <span className="emoji">✨</span>This project was coded by
+          This project was coded by
           <a
             href="https://www.linkedin.com/in/stephanie-anderson-rn-bsn-4658b336/"
             target="_blank"
@@ -20,7 +20,7 @@ function App() {
           >
             {""} Stephanie Anderson
           </a>
-          , is open source on
+          <br /> is open source on
           <a
             href="https://github.com/IslaAdventura/weather-react"
             target="_blank"
@@ -28,13 +28,13 @@ function App() {
           >
             {""} GitHub
           </a>
-          , and hosted on
+          <br /> and hosted on
           <a
             href="https://resplendent-caramel-d48712.netlify.app/"
             target="_blank"
             rel="noreferrer"
           >
-            {""} Netlify <span className="emoji">✨</span>
+            {""} Netlify
           </a>
         </footer>
       </div>

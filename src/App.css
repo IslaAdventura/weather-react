@@ -1,14 +1,14 @@
 .App {
-  background-color: black;
+  background-color: #270c14;
+
+  font-family: "Outfit", sans-serif;
+
+  font-weight: 400;
+  font-style: normal;
   margin: 30px auto;
   max-width: 600px;
   padding: 20px 20px;
   text-align: center;
-}
-
-.App .emoji {
-  font-size: 15px;
-  text-shadow: 0 4px 6px rgb(240, 12, 115);
 }
 
 .App footer {
@@ -18,8 +18,13 @@
 
 .App footer a {
   color: white;
-  font-size: 14px;
+  font-size: 16px;
   font-style: bold;
   text-decoration: none;
-  text-shadow: 0 2px 5px rgb(143, 168, 140);
+  text-shadow: 0 2px 5px black;
+}
+
+.App footer a:hover {
+  text-decoration: none;
+  text-shadow: 0 2px 5px yellow;
 }
