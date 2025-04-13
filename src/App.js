@@ -12,6 +12,8 @@ function App() {
           <Weather defaultCity="Sarasota" />
         </header>
         <footer>
+          {" "}
+          <span className="emoji">✨</span>
           This project was coded by
           <a
             href="https://www.linkedin.com/in/stephanie-anderson-rn-bsn-4658b336/"
@@ -19,7 +21,8 @@ function App() {
             rel="noreferrer"
           >
             {""} Stephanie Anderson
-          </a>
+          </a>{" "}
+          <span className="emoji">✨</span>
           <br /> is open source on
           <a
             href="https://github.com/IslaAdventura/weather-react"

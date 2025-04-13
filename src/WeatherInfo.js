@@ -40,7 +40,6 @@ export default function WeatherInfo(props) {
         return direction.cardinal;
       }
     }
-
     return "N";
   }
 
@@ -48,41 +47,46 @@ export default function WeatherInfo(props) {
     <div className="WeatherInfo">
       <ul>
         <li>
-          <FormattedDate date={props.data.date} />
+          <strong>
+            <FormattedDate date={props.data.date} />
+          </strong>
         </li>
       </ul>
       <h1>
         {props.data.city}, {props.data.country}
       </h1>
-      <ul>
-        <li className="text-capitalize">{props.data.description}</li>
-      </ul>
 
-      <div className="row mt-3">
+      <div className="row">
         <div className="col-6">
           <WeatherIcon code={props.data.icon} />
-
           <WeatherTemperature fahrenheit={props.data.temperature} />
         </div>
-      </div>
 
-      <div className="col-6">
-        <ul>
-          <li>
-            <strong>Humidity</strong>: {props.data.humidity}%
-          </li>
-          <li>
-            <strong>Wind</strong>: {Math.round(props.data.wind)} mph{" "}
-            {getWindDirection(props.data.windDeg)}
-          </li>
-          <br />
-          <li>
-            <strong>🐓🐓 Sunrise</strong>: {formatTime(props.data.sunrise)}
-          </li>
-          <li>
-            <strong>🦇🦇 Sunset</strong>: {formatTime(props.data.sunset)}
-          </li>
-        </ul>
+        <div className="col-6">
+          <ul>
+            <li className="text-capitalize">
+              <strong>~ {props.data.description} ~</strong>
+            </li>
+
+            <li>
+              <strong>Humidity</strong>: {props.data.humidity}%
+            </li>
+            <li>
+              <strong>Wind</strong>: {Math.round(props.data.wind)} mph{" "}
+              {getWindDirection(props.data.windDeg)}
+            </li>
+            <br />
+            <li>
+              <strong>🐓 Sunrise</strong>: {formatTime(props.data.sunrise)}
+            </li>
+            <li>
+              <strong>🦇 Sunset</strong>: {formatTime(props.data.sunset)}
+            </li>
+            <li>
+              <strong>MOON PHASE</strong>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );
