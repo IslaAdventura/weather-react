@@ -1,0 +1,13 @@
+.WeatherDailyForecast {
+  text-align: center;
+}
+.WeatherDailyForecast:hover {
+  background-color: #270c14;
+  box-shadow: 0 3px 6px rgba(233, 121, 221, 0.05),
+    0 8px 10px rgba(233, 121, 221, 0.2);
+  padding: 5px 5px;
+}
+
+.ForecastTempMin {
+  opacity: 75%;
+}

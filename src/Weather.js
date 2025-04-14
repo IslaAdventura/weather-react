@@ -3,6 +3,7 @@ import axios from "axios";
 import PacmanLoader from "react-spinners/PacmanLoader";
 import "./Weather.css";
 import WeatherInfo from "./WeatherInfo";
+import WeatherDailyForecast from "./WeatherDailyForecast";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
@@ -29,7 +30,7 @@ export default function Weather(props) {
   }
 
   function search() {
-    const apiKey = "57821c3b75b60c68ecd1a8d0dd1aa8d3";
+    const apiKey = "1d038ee28ef2727a9f0310860ac10ae9"; //"57821c3b75b60c68ecd1a8d0dd1aa8d3";
     let units = "imperial";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
     axios.get(apiUrl).then(displayWeather);
@@ -65,8 +66,8 @@ export default function Weather(props) {
             </div>
           </div>
         </form>
-
         <WeatherInfo data={weatherData} />
+        <WeatherDailyForecast />
       </div>
     );
   } else {

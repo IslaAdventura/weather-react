@@ -46,20 +46,16 @@ export default function WeatherInfo(props) {
 
   return (
     <div className="WeatherInfo">
-      <ul>
-        <li>
-          <strong>
-            <FormattedDate date={props.data.date} />
-          </strong>
-        </li>
-      </ul>
+      <h2>
+        <FormattedDate date={props.data.date} />
+      </h2>
       <h1>
         {props.data.city}, {props.data.country}
       </h1>
 
       <div className="row">
         <div className="col-6">
-          <WeatherIcon code={props.data.icon} />
+          <WeatherIcon code={props.data.icon} size={55} />
           <WeatherTemperature fahrenheit={props.data.temperature} />
         </div>
 
