@@ -2,6 +2,7 @@ import React from "react";
 import FormattedDate from "./FormattedDate";
 import WeatherIcon from "./WeatherIcon";
 import WeatherTemperature from "./WeatherTemperature";
+import MoonPhase from "./MoonPhase";
 
 export default function WeatherInfo(props) {
   function formatTime(date) {
@@ -82,8 +83,9 @@ export default function WeatherInfo(props) {
             <li>
               <strong>🦇 Sunset</strong>: {formatTime(props.data.sunset)}
             </li>
+
             <li>
-              <strong>MOON PHASE</strong>
+              <MoonPhase date={props.data.date} />
             </li>
           </ul>
         </div>
