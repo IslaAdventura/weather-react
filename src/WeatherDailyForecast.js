@@ -8,6 +8,7 @@ export default function WeatherDailyForecast(props) {
   const [loaded, setLoaded] = useState(false);
   const [forecast, setForecast] = useState(null);
 
+  //use when something is changing
   useEffect(() => {
     setLoaded(false);
 
@@ -32,8 +33,8 @@ export default function WeatherDailyForecast(props) {
     return (
       <PacmanLoader
         className="loader"
-        color={"#904F6C"}
-        size={35}
+        color={"rgb(233, 121, 221)"}
+        size={20}
         aria-label="Loading Spinner"
         data-testid="loader"
       />
