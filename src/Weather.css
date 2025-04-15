@@ -34,7 +34,6 @@
 
 .Weather canvas {
   display: inline-block;
-  margin-right: 15px;
 }
 
 .Weather .temperature-number {

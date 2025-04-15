@@ -9,7 +9,7 @@ function App() {
     <div className="App">
       <div className="container">
         <header className="App-header">
-          <Weather defaultCity="Sarasota" />
+          <Weather defaultCity="Orlando" />
         </header>
         <footer>
           {" "}

@@ -1,6 +1,13 @@
 .WeatherDailyForecast {
   text-align: center;
 }
+
+.WeatherDailyForecast .col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .WeatherDailyForecast:hover {
   background-color: #270c14;
   box-shadow: 0 3px 6px rgba(233, 121, 221, 0.05),
