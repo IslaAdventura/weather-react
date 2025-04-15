@@ -42,7 +42,7 @@ export default function WeatherDailyForecast(props) {
 
   return (
     <div className="WeatherForecast">
-      <div className="row">
+      <div className="row mt-4">
         {forecast.slice(1, 6).map((dailyForecast, index) => (
           <div className="col" key={index}>
             <WeatherForecastDay data={dailyForecast} />

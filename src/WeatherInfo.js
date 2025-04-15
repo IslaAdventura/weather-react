@@ -97,13 +97,13 @@ export default function WeatherInfo(props) {
           <div className="WeatherForecast-temperatures">
             {high !== null && low !== null && (
               <div>
+                <span className="WeatherForecast-temperature-label">HIGH:</span>{" "}
                 <span className="WeatherForecast-temperature-max">{high}°</span>{" "}
-                <span className="WeatherForecast-temperature-label">HIGH</span>{" "}
-                |
+                |{" "}
+                <span className="WeatherForecast-temperature-label">LOW:</span>
                 <span className="WeatherForecast-temperature-min ms-1">
                   {low}°
                 </span>{" "}
-                <span className="WeatherForecast-temperature-label">LOW</span>
               </div>
             )}
           </div>
