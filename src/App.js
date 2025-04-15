@@ -23,7 +23,7 @@ function App() {
             {""} Stephanie Anderson
           </a>{" "}
           <span className="emoji">✨</span>
-          <br /> is open source on
+          <br /> is open sourced on
           <a
             href="https://github.com/IslaAdventura/weather-react"
             target="_blank"
