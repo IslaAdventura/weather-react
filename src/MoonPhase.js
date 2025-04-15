@@ -46,11 +46,8 @@ export default function MoonPhase(props) {
   let date = props.date;
 
   return (
-    <span>
-      <li>
-        {getMoonPhaseEmoji(date)} <strong>Moon</strong>:{" "}
-        {getMoonPhaseName(date)}
-      </li>
-    </span>
+    <li>
+      {getMoonPhaseEmoji(date)} <strong>Moon</strong>: {getMoonPhaseName(date)}
+    </li>
   );
 }

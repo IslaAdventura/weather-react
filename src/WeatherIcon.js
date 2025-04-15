@@ -2,8 +2,6 @@ import React from "react";
 import ReactAnimatedWeather from "react-animated-weather";
 
 export default function WeatherIcon(props) {
-  console.log("Weather icon props:", props);
-
   const sheCodesMapping = {
     "clear-sky-day": "CLEAR_DAY",
     "clear-sky-night": "CLEAR_NIGHT",
@@ -54,12 +52,6 @@ export default function WeatherIcon(props) {
     iconName = sheCodesMapping[props.code];
   } else {
     iconName = "CLOUDY";
-    console.warn(
-      "Icon code not recognized:",
-      props.code,
-      "- using default:",
-      iconName
-    );
   }
 
   try {

@@ -34,12 +34,16 @@
 
 .Weather canvas {
   display: inline-block;
+  margin-top: 0;
+  padding: 0;
 }
 
 .Weather .temperature-number {
   color: #bbceb2;
   font-size: 75px;
   font-weight: 300;
+  margin-top: 0;
+  padding: 0;
 }
 
 .Weather .unit {
@@ -102,4 +106,9 @@
 .Weather .loader {
   margin: 0 auto;
   padding: 100px 100px;
+}
+
+.WeatherInfo-moon {
+  text-align: left;
+  white-space: nowrap;
 }

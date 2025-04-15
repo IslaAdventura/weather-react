@@ -1,10 +1,42 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import FormattedDate from "./FormattedDate";
 import WeatherIcon from "./WeatherIcon";
 import WeatherTemperature from "./WeatherTemperature";
 import MoonPhase from "./MoonPhase";
+import axios from "axios";
 
 export default function WeatherInfo(props) {
+  const [high, setHigh] = useState(null);
+  const [low, setLow] = useState(null);
+
+  useEffect(() => {
+    function getHighLow() {
+      try {
+        let latitude = props.data.coordinates.lat;
+        let longitude = props.data.coordinates.lon;
+        let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lat=${latitude}&lon=${longitude}&key=dbbf0b0ffte4fa30oaa8d9a8aa2bc032&units=imperial`;
+
+        axios.get(apiUrl).then(function (response) {
+          if (
+            response.data &&
+            response.data.daily &&
+            response.data.daily[0] &&
+            response.data.daily[0].temperature
+          ) {
+            setHigh(Math.round(response.data.daily[0].temperature.maximum));
+            setLow(Math.round(response.data.daily[0].temperature.minimum));
+          }
+        });
+      } catch (error) {
+        console.error("Error fetching high/low temperatures:", error);
+      }
+    }
+
+    if (props.data && props.data.coordinates) {
+      getHighLow();
+    }
+  }, [props.data]);
+
   function formatTime(date) {
     let hours = date.getHours() % 12 || 12;
     let minutes = date.getMinutes();
@@ -55,8 +87,26 @@ export default function WeatherInfo(props) {
 
       <div className="row">
         <div className="col-6">
-          <WeatherIcon code={props.data.icon} size={55} />
-          <WeatherTemperature fahrenheit={props.data.temperature} />
+          <div className="d-flex align-items-center">
+            <div className="me-2 mb-3">
+              <WeatherIcon code={props.data.icon} size={50} />
+            </div>
+            <WeatherTemperature fahrenheit={props.data.temperature} />
+          </div>
+
+          <div className="WeatherForecast-temperatures">
+            {high !== null && low !== null && (
+              <div>
+                <span className="WeatherForecast-temperature-max">{high}°</span>{" "}
+                <span className="WeatherForecast-temperature-label">HIGH</span>{" "}
+                |
+                <span className="WeatherForecast-temperature-min ms-1">
+                  {low}°
+                </span>{" "}
+                <span className="WeatherForecast-temperature-label">LOW</span>
+              </div>
+            )}
+          </div>
         </div>
 
         <div className="col-6">
@@ -72,15 +122,14 @@ export default function WeatherInfo(props) {
               <strong>Wind</strong>: {Math.round(props.data.wind)} mph{" "}
               {getWindDirection(props.data.windDeg)}
             </li>
-            <br />
+
             <li>
               <strong>🐓 Sunrise</strong>: {formatTime(props.data.sunrise)}
             </li>
             <li>
               <strong>🦇 Sunset</strong>: {formatTime(props.data.sunset)}
             </li>
-
-            <li>
+            <li className="WeatherInfo-moon">
               <MoonPhase date={props.data.date} />
             </li>
           </ul>
