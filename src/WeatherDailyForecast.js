@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./WeatherDailyForecast.css";
 import axios from "axios";
 import WeatherForecastDay from "./WeatherForecastDay";
+import PacmanLoader from "react-spinners/PacmanLoader";
 
 export default function WeatherDailyForecast(props) {
   const [loaded, setLoaded] = useState(false);
@@ -28,7 +29,15 @@ export default function WeatherDailyForecast(props) {
   }, [props.coordinates]);
 
   if (!loaded || !forecast) {
-    return <div className="WeatherForecast-loading">Loading forecast...</div>;
+    return (
+      <PacmanLoader
+        className="loader"
+        color={"#904F6C"}
+        size={35}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
+    );
   }
 
   return (
