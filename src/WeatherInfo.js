@@ -88,13 +88,17 @@ export default function WeatherInfo(props) {
       <div className="row">
         <div className="col-6">
           <div className="d-flex align-items-center">
-            <div className="me-2 mb-3">
-              <WeatherIcon code={props.data.icon} size={50} />
+            <div className="me-3 mb-3">
+              <WeatherIcon code={props.data.icon} size={70} />
             </div>
             <WeatherTemperature fahrenheit={props.data.temperature} />
           </div>
 
-          <div className="WeatherForecast-temperatures">
+          <div className="text-capitalize fs-3">
+            <span>~ {props.data.description} ~</span>
+          </div>
+
+          <div className="WeatherForecast-temperatures mt-2">
             {high !== null && low !== null && (
               <div>
                 <span className="WeatherForecast-temperature-label">HIGH:</span>{" "}
@@ -111,10 +115,6 @@ export default function WeatherInfo(props) {
 
         <div className="col-6">
           <ul>
-            <li className="text-capitalize">
-              <strong>~ {props.data.description} ~</strong>
-            </li>
-
             <li>
               <strong>Humidity</strong>: {props.data.humidity}%
             </li>
