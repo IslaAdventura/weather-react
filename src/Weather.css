@@ -115,7 +115,7 @@
 
 @media (max-width: 960px) {
   .App {
-    padding: 60px 0;
+    padding: 100px 0;
   }
   header h1 {
     font-size: 30px;
@@ -144,18 +144,17 @@
   .Weather .button {
     font-size: 10px;
     font-weight: 500;
+    margin-left: -20px;
   }
 
   .Weather canvas {
-    display: none;
+    font-size: 10px;
   }
 
   .Weather li {
     font-size: 14px;
     font-weight: 200;
     line-height: 2;
-    display: flex;
-    text-align: match-parent;
   }
 
   footer {
