@@ -124,10 +124,16 @@ export default function WeatherInfo(props) {
             </li>
 
             <li>
-              <strong>🐓 Sunrise</strong>: {formatTime(props.data.sunrise)}
+              <strong>
+                <span className="emoji">🐓</span> Sunrise
+              </strong>
+              : {formatTime(props.data.sunrise)}
             </li>
             <li>
-              <strong>🦇 Sunset</strong>: {formatTime(props.data.sunset)}
+              <strong>
+                <span className="emoji">🦇</span> Sunset
+              </strong>
+              : {formatTime(props.data.sunset)}
             </li>
             <li className="WeatherInfo-moon">
               <MoonPhase date={props.data.date} />

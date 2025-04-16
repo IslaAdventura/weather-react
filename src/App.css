@@ -31,3 +31,19 @@
   text-decoration: none;
   text-shadow: 0 2px 5px rgb(233, 121, 221);
 }
+
+@media (max-width: 960px) {
+  .App {
+    padding: 15px 0;
+  }
+
+  .App footer {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .App footer a {
+    font-size: 14px;
+    text-decoration: underline;
+  }
+}

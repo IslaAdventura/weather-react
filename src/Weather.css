@@ -114,14 +114,11 @@
 }
 
 @media (max-width: 960px) {
-  .App {
-    padding: 100px 0;
+  .WeatherInfo h1 {
+    font-size: 40px;
   }
-  header h1 {
-    font-size: 30px;
-  }
-  header h2 {
-    font-size: 20px;
+  .WeatherInfo h2 {
+    font-size: 15px;
   }
 
   .Weather .temperature-number {
@@ -144,27 +141,26 @@
   .Weather .button {
     font-size: 10px;
     font-weight: 500;
-    margin-left: -20px;
+    margin-left: -15px;
   }
 
   .Weather canvas {
-    font-size: 10px;
+    display: flex;
   }
 
   .Weather li {
+    display: block;
     font-size: 14px;
     font-weight: 200;
     line-height: 2;
   }
 
-  footer {
-    font-size: 14px;
-  }
-  footer a {
-    font-size: 14px;
+  .WeatherInfo .emoji {
+    font-size: 90px;
   }
 
-  .WeatherInfo-moon {
+  .WeatherInfo .WeatherInfo-moon {
+    display: block;
     white-space: pre-wrap;
   }
 }
